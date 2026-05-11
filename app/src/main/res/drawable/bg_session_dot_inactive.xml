@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    bg_session_dot_inactive.xml
+    Dark dimmed circle — remaining Pomodoro session dot
+    Used in: fragment_focus.xml (dot_session_3, dot_session_4)
+-->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="oval">
+    <solid android:color="@color/dark_bg_highlight" />
+</shape>

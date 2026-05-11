@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    bg_checkbox_dark_unchecked.xml
+    Dark outlined square — unchecked checkbox on Focus task list
+    Used in: item_focus_task.xml as fallback background
+-->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <corners android:radius="4dp" />
+    <solid android:color="@android:color/transparent" />
+    <stroke
+        android:width="1.5dp"
+        android:color="@color/dark_bg_elevated" />
+</shape>

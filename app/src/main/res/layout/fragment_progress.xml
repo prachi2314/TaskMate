@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    fragment_progress.xml
+    Location: res/layout/fragment_progress.xml
+-->
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_progress"
+    tools:context=".ui.progress.ProgressFragment">
+
+    <!-- Header -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/header_progress"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/teal_50"
+        android:paddingHorizontal="16dp"
+        android:paddingTop="16dp"
+        android:paddingBottom="12dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <TextView
+            android:id="@+id/tv_progress_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Progress tracker"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@color/teal_900"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:ignore="HardcodedText" />
+
+        <TextView
+            android:id="@+id/tv_progress_subtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:textSize="12sp"
+            android:textColor="@color/teal_500"
+            app:layout_constraintTop_toBottomOf="@id/tv_progress_title"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text="April 2026 · Exam in 24 days" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- Scrollable content -->
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:padding="12dp"
+        android:clipToPadding="false"
+        app:layout_constraintTop_toBottomOf="@id/header_progress"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- Motivational quote card -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_quote"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                app:cardBackgroundColor="@color/teal_500"
+                app:cardCornerRadius="14dp"
+                app:cardElevation="0dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="14dp">
+
+                    <TextView
+                        android:id="@+id/tv_quote"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="13sp"
+                        android:textColor="@color/white"
+                        android:lineSpacingMultiplier="1.5"
+                        android:fontFamily="sans-serif-light"
+                        tools:text='"Success is the sum of small efforts repeated day in and day out."' />
+
+                    <TextView
+                        android:id="@+id/tv_quote_author"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        android:gravity="end"
+                        android:textSize="11sp"
+                        android:textColor="@color/teal_100"
+                        tools:text="— Robert Collier" />
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Weekly goal rings card -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_weekly_goals"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="14dp"
+                app:cardElevation="0dp"
+                app:strokeColor="@color/card_stroke_teal"
+                app:strokeWidth="1dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="12dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Weekly goals"
+                        android:textSize="13sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/teal_800"
+                        android:layout_marginBottom="12dp"
+                        tools:ignore="HardcodedText" />
+
+                    <!-- Three ring charts in a row -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center">
+
+                        <!-- Ring 1: Study hours -->
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:gravity="center">
+
+                            <com.example.taskmate.utils.CircularProgressView
+                                android:id="@+id/cpb_study_hours"
+                                android:layout_width="72dp"
+                                android:layout_height="72dp"
+                                app:cpv_progress="75"
+                                app:cpv_strokeWidth="8dp"
+                                app:cpv_progressColor="@color/teal_500"
+                                app:cpv_trackColor="@color/teal_50" />
+
+                            <TextView
+                                android:id="@+id/tv_study_hours_value"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="6dp"
+                                android:textSize="13sp"
+                                android:textStyle="bold"
+                                android:textColor="@color/teal_800"
+                                tools:text="75%" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="2dp"
+                                android:text="Study hrs"
+                                android:textSize="10sp"
+                                android:textColor="@color/teal_500"
+                                tools:ignore="HardcodedText" />
+
+                        </LinearLayout>
+
+                        <!-- Ring 2: Tasks done -->
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:gravity="center">
+
+                            <com.example.taskmate.utils.CircularProgressView
+                                android:id="@+id/cpb_tasks_done"
+                                android:layout_width="72dp"
+                                android:layout_height="72dp"
+                                app:cpv_progress="62"
+                                app:cpv_strokeWidth="8dp"
+                                app:cpv_progressColor="@color/purple_500"
+                                app:cpv_trackColor="@color/purple_50" />
+
+                            <TextView
+                                android:id="@+id/tv_tasks_value"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="6dp"
+                                android:textSize="13sp"
+                                android:textStyle="bold"
+                                android:textColor="@color/purple_800"
+                                tools:text="62%" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="2dp"
+                                android:text="Tasks"
+                                android:textSize="10sp"
+                                android:textColor="@color/purple_500"
+                                tools:ignore="HardcodedText" />
+
+                        </LinearLayout>
+
+                        <!-- Ring 3: Revision -->
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:gravity="center">
+
+                            <com.example.taskmate.utils.CircularProgressView
+                                android:id="@+id/cpb_revision"
+                                android:layout_width="72dp"
+                                android:layout_height="72dp"
+                                app:cpv_progress="90"
+                                app:cpv_strokeWidth="8dp"
+                                app:cpv_progressColor="@color/pink_400"
+                                app:cpv_trackColor="@color/pink_50" />
+
+                            <TextView
+                                android:id="@+id/tv_revision_value"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="6dp"
+                                android:textSize="13sp"
+                                android:textStyle="bold"
+                                android:textColor="@color/pink_800"
+                                tools:text="90%" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="2dp"
+                                android:text="Revision"
+                                android:textSize="10sp"
+                                android:textColor="@color/pink_500"
+                                tools:ignore="HardcodedText" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Subject mastery card -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_mastery"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="14dp"
+                app:cardElevation="0dp"
+                app:strokeColor="@color/card_stroke_teal"
+                app:strokeWidth="1dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="12dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Subject mastery"
+                        android:textSize="13sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/teal_800"
+                        android:layout_marginBottom="10dp"
+                        tools:ignore="HardcodedText" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rv_mastery"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:nestedScrollingEnabled="false"
+                        tools:listitem="@layout/item_progress_subject"
+                        tools:itemCount="5" />
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

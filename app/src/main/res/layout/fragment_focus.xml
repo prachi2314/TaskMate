@@ -1,0 +1,379 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    fragment_focus.xml
+    Location: res/layout/fragment_focus.xml
+    Dark themed screen — all colors use dark_* values
+-->
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/dark_bg_primary"
+    tools:context=".ui.focus.FocusFragment">
+
+    <!-- Title + mode badge -->
+    <TextView
+        android:id="@+id/tv_focus_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="Focus mode"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@color/dark_text_primary"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/chip_mode_badge"
+        tools:ignore="HardcodedText" />
+
+    <TextView
+        android:id="@+id/chip_mode_badge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:paddingHorizontal="12dp"
+        android:paddingVertical="5dp"
+        android:text="Pomodoro"
+        android:textSize="11sp"
+        android:textColor="@color/purple_300"
+        android:background="@drawable/bg_dark_pill"
+        app:layout_constraintTop_toTopOf="@id/tv_focus_title"
+        app:layout_constraintBottom_toBottomOf="@id/tv_focus_title"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:ignore="HardcodedText" />
+
+    <!-- Subject chip -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_subject_chip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        app:cardBackgroundColor="@color/dark_bg_card"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="0dp"
+        app:strokeColor="@color/dark_stroke"
+        app:strokeWidth="1dp"
+        app:layout_constraintTop_toBottomOf="@id/tv_focus_title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingHorizontal="14dp"
+            android:paddingVertical="8dp">
+
+            <View
+                android:id="@+id/view_subject_color_dot"
+                android:layout_width="8dp"
+                android:layout_height="8dp"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/bg_session_dot_active" />
+
+            <TextView
+                android:id="@+id/tv_current_subject_chip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:textColor="@color/dark_text_secondary"
+                tools:text="Mathematics — Integration" />
+
+            <!-- DND status label -->
+            <TextView
+                android:id="@+id/tv_dnd_status"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:textSize="11sp"
+                android:textColor="@color/purple_300"
+                android:clickable="true"
+                android:focusable="true"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:paddingVertical="4dp"
+                app:layout_constraintTop_toBottomOf="@id/chip_group_mode"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:text="Tap to enable Focus Mode (DND)" />
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <!-- Pomodoro ring + time display -->
+    <FrameLayout
+        android:id="@+id/frame_timer"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintTop_toBottomOf="@id/card_subject_chip"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <com.example.taskmate.utils.CircularProgressView
+            android:id="@+id/cpb_pomodoro"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:cpv_progress="74"
+            app:cpv_strokeWidth="12dp"
+            app:cpv_progressColor="@color/purple_500"
+            app:cpv_trackColor="@color/dark_bg_elevated" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/tv_timer_display"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="42sp"
+                android:textStyle="bold"
+                android:textColor="@color/dark_text_primary"
+                android:letterSpacing="0.04"
+                tools:text="18:43" />
+
+            <TextView
+                android:id="@+id/tv_timer_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="Focus session"
+                android:textSize="12sp"
+                android:textColor="@color/dark_text_hint"
+                tools:ignore="HardcodedText" />
+
+        </LinearLayout>
+    </FrameLayout>
+
+    <!-- Session dots -->
+    <LinearLayout
+        android:id="@+id/ll_session_dots"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="14dp"
+        app:layout_constraintTop_toBottomOf="@id/frame_timer"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <View android:id="@+id/dot_session_1"
+            android:layout_width="10dp" android:layout_height="10dp"
+            android:layout_margin="4dp"
+            android:background="@drawable/bg_session_dot_active" />
+        <View android:id="@+id/dot_session_2"
+            android:layout_width="10dp" android:layout_height="10dp"
+            android:layout_margin="4dp"
+            android:background="@drawable/bg_session_dot_active" />
+        <View android:id="@+id/dot_session_3"
+            android:layout_width="10dp" android:layout_height="10dp"
+            android:layout_margin="4dp"
+            android:background="@drawable/bg_session_dot_inactive" />
+        <View android:id="@+id/dot_session_4"
+            android:layout_width="10dp" android:layout_height="10dp"
+            android:layout_margin="4dp"
+            android:background="@drawable/bg_session_dot_inactive" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_session_counter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:text="Session 2 of 4"
+        android:textSize="11sp"
+        android:textColor="@color/dark_text_hint"
+        app:layout_constraintTop_toBottomOf="@id/ll_session_dots"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:ignore="HardcodedText" />
+
+    <!-- Playback controls -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/controls_row"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginHorizontal="48dp"
+        app:layout_constraintTop_toBottomOf="@id/tv_session_counter"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <!-- Reset -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_reset"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:insetLeft="0dp"
+            android:insetTop="0dp"
+            android:insetRight="0dp"
+            android:insetBottom="0dp"
+            app:icon="@drawable/ic_reset_24"
+            app:iconGravity="textStart"
+            app:iconPadding="0dp"
+            app:iconTint="@color/dark_text_hint"
+            app:backgroundTint="@color/dark_bg_card"
+            app:strokeColor="@color/dark_stroke"
+            app:strokeWidth="1dp"
+            app:cornerRadius="24dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/btn_play_pause" />
+
+        <!-- Play / Pause -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_play_pause"
+            android:layout_width="68dp"
+            android:layout_height="68dp"
+            android:insetLeft="0dp"
+            android:insetTop="0dp"
+            android:insetRight="0dp"
+            android:insetBottom="0dp"
+            app:icon="@drawable/ic_pause_24"
+            app:iconGravity="textStart"
+            app:iconPadding="0dp"
+            app:iconTint="@color/white"
+            app:iconSize="28dp"
+            app:backgroundTint="@color/purple_600"
+            app:cornerRadius="34dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <!-- Skip -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_skip"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:insetLeft="0dp"
+            android:insetTop="0dp"
+            android:insetRight="0dp"
+            android:insetBottom="0dp"
+            app:icon="@drawable/ic_skip_next_24"
+            app:iconGravity="textStart"
+            app:iconPadding="0dp"
+            app:iconTint="@color/dark_text_hint"
+            app:backgroundTint="@color/dark_bg_card"
+            app:strokeColor="@color/dark_stroke"
+            app:strokeWidth="1dp"
+            app:cornerRadius="24dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/btn_play_pause"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- Mode chip group -->
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/chip_group_mode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:singleSelection="true"
+        app:chipSpacingHorizontal="8dp"
+        app:layout_constraintTop_toBottomOf="@id/controls_row"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip_focus_mode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="25 min focus"
+            android:textSize="11sp"
+            android:textColor="@color/white"
+            android:checked="true"
+            app:chipBackgroundColor="@color/purple_600"
+            app:chipStrokeWidth="0dp"
+            tools:ignore="HardcodedText" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip_short_break"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="5 min break"
+            android:textSize="11sp"
+            android:textColor="@color/dark_text_hint"
+            app:chipBackgroundColor="@color/dark_bg_card"
+            app:chipStrokeColor="@color/dark_stroke"
+            app:chipStrokeWidth="1dp"
+            tools:ignore="HardcodedText" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip_long_break"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Long break"
+            android:textSize="11sp"
+            android:textColor="@color/dark_text_hint"
+            app:chipBackgroundColor="@color/dark_bg_card"
+            app:chipStrokeColor="@color/dark_stroke"
+            app:chipStrokeWidth="1dp"
+            tools:ignore="HardcodedText" />
+
+    </com.google.android.material.chip.ChipGroup>
+
+    <!-- Current task mini card -->
+    <androidx.cardview.widget.CardView
+    android:id="@+id/card_focus_tasks"
+    android:layout_width="0dp"
+    android:layout_height="0dp"
+    android:layout_marginHorizontal="16dp"
+    android:layout_marginTop="16dp"
+    android:layout_marginBottom="16dp"
+    app:cardBackgroundColor="@color/dark_bg_card"
+    app:cardCornerRadius="14dp"
+    app:cardElevation="0dp"
+    app:strokeColor="@color/dark_stroke"
+    app:strokeWidth="1dp"
+    app:layout_constraintTop_toBottomOf="@id/chip_group_mode"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toEndOf="parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="12dp">
+
+        <!--
+            tv_focus_task_title — THIS ID is referenced in FocusFragment.kt
+            line 408: binding.tvFocusTaskTitle.text = ...
+            Must exist here with exactly this ID.
+        -->
+        <TextView
+            android:id="@+id/tv_focus_task_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Current tasks"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:textColor="@color/purple_300"
+            android:layout_marginBottom="8dp"
+            tools:ignore="HardcodedText" />
+
+        <!-- Task RecyclerView -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_focus_tasks"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:nestedScrollingEnabled="false"
+            tools:listitem="@layout/item_focus_task"
+            tools:itemCount="3" />
+
+    </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

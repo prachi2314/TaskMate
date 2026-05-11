@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    bg_badge_ok.xml
+    Location: res/drawable/bg_badge_ok.xml
+    Teal pill background for "Revised ✓" badge on chapter rows
+    and "OK" urgency badge on exam rows.
+-->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <corners android:radius="20dp" />
+    <solid android:color="#E1F5EE" />
+</shape>

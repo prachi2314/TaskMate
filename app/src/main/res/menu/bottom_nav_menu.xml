@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    bottom_nav_menu.xml
+    Location: res/menu/bottom_nav_menu.xml
+    Used by: BottomNavigationView in activity_dashboard.xml
+    Each item id MUST match the Fragment id in nav_graph.xml
+    so Navigation Component can handle tab switching automatically.
+-->
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Home / Dashboard tab -->
+    <item
+        android:id="@+id/dashboardFragment"
+        android:icon="@drawable/ic_home_24"
+        android:title="Home"
+        android:menuCategory="secondary" />
+
+    <!-- Timetable tab -->
+    <item
+        android:id="@+id/timetableFragment"
+        android:icon="@drawable/ic_schedule_24"
+        android:title="Schedule"
+        android:menuCategory="secondary" />
+
+    <!-- Subjects tab -->
+    <item
+        android:id="@+id/subjectFragment"
+        android:icon="@drawable/ic_book_24"
+        android:title="Subjects"
+        android:menuCategory="secondary" />
+
+    <!-- Progress tab -->
+    <item
+        android:id="@+id/progressFragment"
+        android:icon="@drawable/ic_trending_up_24"
+        android:title="Progress"
+        android:menuCategory="secondary" />
+
+    <!-- Focus / Pomodoro tab -->
+    <item
+        android:id="@+id/focusFragment"
+        android:icon="@drawable/ic_timer_24"
+        android:title="Focus"
+        android:menuCategory="secondary" />
+
+</menu>

@@ -1,0 +1,393 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    bottom_sheet_add_slot.xml
+    Location: res/layout/bottom_sheet_add_slot.xml
+    Used in: AddSlotBottomSheet
+-->
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@color/white"
+    android:paddingBottom="32dp">
+
+    <!-- ── Drag handle ──────────────────────────────────────────── -->
+    <View
+        android:layout_width="40dp"
+        android:layout_height="4dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/bg_streak_empty"
+        android:backgroundTint="@color/gray_300" />
+
+    <!-- ── Header row ───────────────────────────────────────────── -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="16dp"
+        android:paddingBottom="12dp">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Add schedule slot"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="@color/blue_900"
+            tools:ignore="HardcodedText" />
+
+        <ImageButton
+            android:id="@+id/btn_close_slot_sheet"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/ic_close_24"
+            android:contentDescription="Close" />
+
+    </LinearLayout>
+
+    <!-- Divider -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/blue_100" />
+
+    <!-- ── Scrollable form content ──────────────────────────────── -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- ── DAY OF WEEK SECTION ──────────────────────────── -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Day of week"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:textColor="@color/blue_600"
+                android:layout_marginBottom="8dp"
+                tools:ignore="HardcodedText" />
+
+            <!-- Day chip horizontal scroll -->
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scrollbars="none"
+                android:layout_marginBottom="18dp">
+
+                <LinearLayout
+                    android:id="@+id/ll_day_chips"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal" />
+
+            </HorizontalScrollView>
+
+            <!-- ── SUBJECT DROPDOWN ─────────────────────────────── -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_slot_subject"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="14dp"
+                android:hint="Subject"
+                app:boxCornerRadiusTopStart="12dp"
+                app:boxCornerRadiusTopEnd="12dp"
+                app:boxCornerRadiusBottomStart="12dp"
+                app:boxCornerRadiusBottomEnd="12dp"
+                app:boxStrokeColor="@color/input_stroke_default"
+                app:hintTextColor="@color/blue_400"
+                app:startIconDrawable="@drawable/ic_book_24"
+                app:startIconTint="@color/blue_400"
+                tools:ignore="HardcodedText">
+
+                <AutoCompleteTextView
+                    android:id="@+id/acv_slot_subject"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="none"
+                    android:focusable="false"
+                    android:clickable="true"
+                    android:textSize="14sp"
+                    android:textColor="@color/purple_900"
+                    tools:text="Mathematics" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- ── START TIME SECTION ──────────────────────────── -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Start time"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:textColor="@color/blue_600"
+                android:layout_marginBottom="8dp"
+                tools:ignore="HardcodedText" />
+
+            <!-- Hour + Minute + AM/PM row -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_marginBottom="6dp">
+
+                <!-- Hour picker (1–12) -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Hour"
+                        android:textSize="11sp"
+                        android:textColor="@color/blue_400"
+                        android:layout_marginBottom="4dp"
+                        tools:ignore="HardcodedText" />
+
+                    <NumberPicker
+                        android:id="@+id/np_hour"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+
+                <!-- Colon -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="8dp"
+                    android:layout_marginTop="20dp"
+                    android:text=":"
+                    android:textSize="28sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/blue_600"
+                    tools:ignore="HardcodedText" />
+
+                <!-- Minute picker (00, 15, 30, 45) -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Minute"
+                        android:textSize="11sp"
+                        android:textColor="@color/blue_400"
+                        android:layout_marginBottom="4dp"
+                        tools:ignore="HardcodedText" />
+
+                    <NumberPicker
+                        android:id="@+id/np_minute"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+
+                <!-- AM / PM picker -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="AM/PM"
+                        android:textSize="11sp"
+                        android:textColor="@color/blue_400"
+                        android:layout_marginBottom="4dp"
+                        tools:ignore="HardcodedText" />
+
+                    <NumberPicker
+                        android:id="@+id/np_am_pm"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- Time preview -->
+            <TextView
+                android:id="@+id/tv_time_preview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_marginBottom="18dp"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:textColor="@color/blue_600"
+                tools:text="8:00 AM" />
+
+            <!-- ── DURATION INPUT ────────────────────────────────── -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_slot_duration"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="14dp"
+                android:hint="Duration (minutes)"
+                app:boxCornerRadiusTopStart="12dp"
+                app:boxCornerRadiusTopEnd="12dp"
+                app:boxCornerRadiusBottomStart="12dp"
+                app:boxCornerRadiusBottomEnd="12dp"
+                app:boxStrokeColor="@color/input_stroke_default"
+                app:hintTextColor="@color/blue_400"
+                app:helperText="e.g. 60 for 1 hour, 90 for 1.5 hours"
+                tools:ignore="HardcodedText">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_slot_duration"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    android:textSize="14sp"
+                    android:textColor="@color/purple_900"
+                    android:imeOptions="actionNext"
+                    tools:text="60" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- ── LOCATION / ROOM INPUT ─────────────────────────── -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_slot_location"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:hint="Room / Location (optional)"
+                app:boxCornerRadiusTopStart="12dp"
+                app:boxCornerRadiusTopEnd="12dp"
+                app:boxCornerRadiusBottomStart="12dp"
+                app:boxCornerRadiusBottomEnd="12dp"
+                app:boxStrokeColor="@color/input_stroke_default"
+                app:hintTextColor="@color/blue_400"
+                tools:ignore="HardcodedText">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_slot_location"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textCapWords"
+                    android:textSize="14sp"
+                    android:textColor="@color/purple_900"
+                    android:imeOptions="actionDone"
+                    tools:text="Room 204" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- ── SLOT TYPE SECTION ─────────────────────────────── -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Slot type"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:textColor="@color/blue_600"
+                android:layout_marginBottom="8dp"
+                tools:ignore="HardcodedText" />
+
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/chip_group_slot_type"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                app:singleSelection="true"
+                app:chipSpacingHorizontal="8dp">
+
+                <!-- Class chip — default selected -->
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip_type_class"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Class"
+                    android:textSize="12sp"
+                    android:checked="true"
+                    app:chipBackgroundColor="@color/blue_50"
+                    app:chipStrokeColor="@color/blue_200"
+                    app:chipStrokeWidth="1dp"
+                    app:checkedIconTint="@color/blue_600"
+                    tools:ignore="HardcodedText" />
+
+                <!-- Self Study chip -->
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip_type_self_study"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Self Study"
+                    android:textSize="12sp"
+                    app:chipBackgroundColor="@color/purple_50"
+                    app:chipStrokeColor="@color/purple_200"
+                    app:chipStrokeWidth="1dp"
+                    app:checkedIconTint="@color/purple_600"
+                    tools:ignore="HardcodedText" />
+
+                <!-- Break chip -->
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip_type_break"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Break"
+                    android:textSize="12sp"
+                    app:chipBackgroundColor="@color/teal_50"
+                    app:chipStrokeColor="@color/teal_200"
+                    app:chipStrokeWidth="1dp"
+                    app:checkedIconTint="@color/teal_600"
+                    tools:ignore="HardcodedText" />
+
+                <!-- Exam chip -->
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip_type_exam"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Exam"
+                    android:textSize="12sp"
+                    app:chipBackgroundColor="@color/red_50"
+                    app:chipStrokeColor="@color/red_200"
+                    app:chipStrokeWidth="1dp"
+                    app:checkedIconTint="@color/red_600"
+                    tools:ignore="HardcodedText" />
+
+            </com.google.android.material.chip.ChipGroup>
+
+            <!-- ── SAVE BUTTON ───────────────────────────────────── -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_save_slot"
+                android:layout_width="match_parent"
+                android:layout_height="54dp"
+                android:text="Add slot"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                app:backgroundTint="@color/blue_600"
+                app:cornerRadius="14dp"
+                app:icon="@drawable/ic_add_24"
+                app:iconGravity="start"
+                app:iconSize="18dp"
+                app:iconTint="@color/white"
+                tools:ignore="HardcodedText" />
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

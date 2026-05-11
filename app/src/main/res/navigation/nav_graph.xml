@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    nav_graph.xml
+    Location: res/navigation/nav_graph.xml
+    Used by: NavHostFragment in activity_dashboard.xml
+
+    Each <fragment> entry registers a screen as a destination.
+    The id MUST match the menu item id in bottom_nav_menu.xml
+    for BottomNavigationView to switch fragments automatically.
+
+    startDestination = dashboardFragment means Dashboard
+    is the first screen shown when DashboardActivity starts.
+-->
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/dashboardFragment">
+
+    <!-- ── Dashboard ──────────────────────────────────────────── -->
+    <fragment
+        android:id="@+id/dashboardFragment"
+        android:name="com.example.taskmate.ui.dashboard.DashboardFragment"
+        android:label="Home"
+        tools:layout="@layout/fragment_dashboard">
+
+        <!-- Navigate to subject detail -->
+        <action
+            android:id="@+id/action_dashboard_to_subject"
+            app:destination="@id/subjectFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+
+    </fragment>
+
+    <!-- ── Timetable ──────────────────────────────────────────── -->
+    <fragment
+        android:id="@+id/timetableFragment"
+        android:name="com.example.taskmate.ui.timetable.TimetableFragment"
+        android:label="Schedule"
+        tools:layout="@layout/fragment_timetable" />
+
+    <!-- ── Subject tracker ────────────────────────────────────── -->
+    <fragment
+        android:id="@+id/subjectFragment"
+        android:name="com.example.taskmate.ui.subject.SubjectFragment"
+        android:label="Subjects"
+        tools:layout="@layout/fragment_subject" />
+
+    <!-- ── Progress tracker ───────────────────────────────────── -->
+    <fragment
+        android:id="@+id/progressFragment"
+        android:name="com.example.taskmate.ui.progress.ProgressFragment"
+        android:label="Progress"
+        tools:layout="@layout/fragment_progress" />
+
+    <!-- ── Focus / Pomodoro ───────────────────────────────────── -->
+    <fragment
+        android:id="@+id/focusFragment"
+        android:name="com.example.taskmate.ui.focus.FocusFragment"
+        android:label="Focus"
+        tools:layout="@layout/fragment_focus" />
+
+</navigation>

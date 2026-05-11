@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    item_exam.xml
+    Location: res/layout/item_exam.xml
+    Used in: ExamAdapter → rv_exams RecyclerView
+-->
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="6dp"
+    android:paddingBottom="6dp">
+
+    <!-- ── Date badge square ──────────────────────────────────────── -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_exam_date"
+        android:layout_width="44dp"
+        android:layout_height="44dp"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="0dp"
+        app:cardBackgroundColor="@color/blue_50"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <!-- Day number — e.g. "14" -->
+            <TextView
+                android:id="@+id/tv_exam_day"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:textColor="@color/blue_800"
+                tools:text="14" />
+
+            <!-- Month abbreviation — e.g. "APR" -->
+            <TextView
+                android:id="@+id/tv_exam_month"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="9sp"
+                android:textColor="@color/blue_400"
+                tools:text="APR" />
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <!-- ── Exam name ──────────────────────────────────────────────── -->
+    <TextView
+        android:id="@+id/tv_exam_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:textSize="13sp"
+        android:textStyle="bold"
+        android:textColor="@color/purple_900"
+        android:maxLines="1"
+        android:ellipsize="end"
+        app:layout_constraintTop_toTopOf="@id/card_exam_date"
+        app:layout_constraintStart_toEndOf="@id/card_exam_date"
+        app:layout_constraintEnd_toStartOf="@id/tv_exam_urgency"
+        tools:text="Physics — Unit Test" />
+
+    <!-- ── Days away label ───────────────────────────────────────── -->
+    <TextView
+        android:id="@+id/tv_exam_days_away"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="3dp"
+        android:textSize="11sp"
+        android:textColor="@color/purple_400"
+        app:layout_constraintTop_toBottomOf="@id/tv_exam_name"
+        app:layout_constraintStart_toEndOf="@id/card_exam_date"
+        app:layout_constraintEnd_toStartOf="@id/tv_exam_urgency"
+        tools:text="3 days away" />
+
+    <!-- ── Urgency badge pill ─────────────────────────────────────── -->
+    <TextView
+        android:id="@+id/tv_exam_urgency"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="10dp"
+        android:paddingVertical="4dp"
+        android:textSize="10sp"
+        android:textStyle="bold"
+        android:textColor="@color/amber_800"
+        android:background="@drawable/bg_urgency_badge"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:text="Soon" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

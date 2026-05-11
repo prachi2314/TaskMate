@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">TaskMate</string>
+    <string name="app_tagline">Plan Smart. Study Better.</string>
+    <string name="login_title">Sign in</string>
+    <string name="register_title">Create account</string>
+    <string name="login_subtitle">Welcome back! Enter your details.</string>
+    <string name="register_subtitle">Join TaskMate and start studying smarter!</string>
+    <string name="hint_name">Full name</string>
+    <string name="hint_email">Email address</string>
+    <string name="hint_password">Password</string>
+    <string name="btn_login">Sign in</string>
+    <string name="btn_register">Create account</string>
+    <string name="btn_google">Continue with Google</string>
+    <string name="forgot_password">Forgot password?</string>
+    <string name="switch_to_register">Don\'t have an account? Sign up</string>
+    <string name="switch_to_login">Already have an account? Sign in</string>
+    <string name="reset_email_sent">Reset link sent! Check your inbox.</string>
+    <string name="error_empty_fields">All fields are required</string>
+    <string name="error_short_password">Password must be at least 6 characters</string>
+    <string name="error_invalid_email">Enter a valid email address</string>
+    <string name="error_name_required">Name is required</string>
+    <string name="task_added">Task added successfully!</string>
+    <string name="subject_added">Subject added successfully!</string>
+    <string name="progress_updated">Progress updated!</string>
+    <string name="content_logo">TaskMate logo</string>
+</resources>

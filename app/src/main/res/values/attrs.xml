@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    attrs.xml
+    Location: res/values/attrs.xml
+    Declares custom XML attributes for CircularProgressView.
+    These are the app:cpv_* attributes used in layout files.
+-->
+<resources>
+
+    <declare-styleable name="CircularProgressView">
+
+        <!-- Progress value from 0 to 100 -->
+        <attr name="cpv_progress" format="float" />
+
+        <!-- Color of the progress arc -->
+        <attr name="cpv_progressColor" format="color" />
+
+        <!-- Color of the background track ring -->
+        <attr name="cpv_trackColor" format="color" />
+
+        <!-- Width of both the progress arc and track ring -->
+        <attr name="cpv_strokeWidth" format="dimension" />
+
+    </declare-styleable>
+
+</resources>

@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    activity_main.xml
+    Location: res/layout/activity_main.xml
+    TaskMate Splash Screen
+    Shows: Logo + App name + tagline + animated dots
+-->
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/splash_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_splash_gradient"
+    tools:context=".MainActivity">
+
+    <!-- ══════════════════════════════════════════════
+         CENTER CONTENT — logo + name + tagline
+         All constrained as a vertical chain so they
+         stay centered even on different screen sizes
+    ══════════════════════════════════════════════ -->
+
+    <!-- TaskMate Logo -->
+    <ImageView
+        android:id="@+id/iv_splash_logo"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:src="@drawable/ic_taskmate_logo"
+        android:contentDescription="@string/content_logo"
+        android:alpha="0"
+        android:scaleX="0.8"
+        android:scaleY="0.8"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/tv_splash_app_name"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintVertical_chainStyle="packed"
+        app:layout_constraintVertical_bias="0.42" />
+
+    <!-- App name -->
+    <TextView
+        android:id="@+id/tv_splash_app_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="TaskMate"
+        android:textSize="38sp"
+        android:textStyle="bold"
+        android:textColor="#FFFFFF"
+        android:letterSpacing="0.04"
+        android:alpha="0"
+        android:fontFamily="sans-serif-medium"
+        app:layout_constraintTop_toBottomOf="@id/iv_splash_logo"
+        app:layout_constraintBottom_toTopOf="@id/tv_splash_tagline"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:ignore="HardcodedText" />
+
+    <!-- Tagline -->
+    <TextView
+        android:id="@+id/tv_splash_tagline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Plan Smart. Study Better."
+        android:textSize="15sp"
+        android:textColor="#C4B8E8"
+        android:letterSpacing="0.06"
+        android:alpha="0"
+        app:layout_constraintTop_toBottomOf="@id/tv_splash_app_name"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:ignore="HardcodedText" />
+
+    <!-- ══════════════════════════════════════════════
+         VERSION LABEL — bottom of screen
+    ══════════════════════════════════════════════ -->
+    <TextView
+        android:id="@+id/tv_version"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        android:text="v1.0.0"
+        android:textSize="11sp"
+        android:textColor="#6B5FA0"
+        android:alpha="0"
+        app:layout_constraintBottom_toTopOf="@id/loading_dots"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:ignore="HardcodedText" />
+
+    <!-- ══════════════════════════════════════════════
+         LOADING DOTS — animated bottom indicator
+    ══════════════════════════════════════════════ -->
+    <LinearLayout
+        android:id="@+id/loading_dots"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="48dp"
+        android:gravity="center"
+        android:alpha="0"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <View
+            android:id="@+id/dot1"
+            android:layout_width="8dp"
+            android:layout_height="8dp"
+            android:layout_marginHorizontal="5dp"
+            android:background="@drawable/bg_loading_dot" />
+
+        <View
+            android:id="@+id/dot2"
+            android:layout_width="8dp"
+            android:layout_height="8dp"
+            android:layout_marginHorizontal="5dp"
+            android:background="@drawable/bg_loading_dot_faded" />
+
+        <View
+            android:id="@+id/dot3"
+            android:layout_width="8dp"
+            android:layout_height="8dp"
+            android:layout_marginHorizontal="5dp"
+            android:background="@drawable/bg_loading_dot_faded" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

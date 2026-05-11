@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    bg_day_chip_active.xml
+    Filled blue pill — selected day in timetable day strip
+    Used in: TimetableFragment day chips (programmatically)
+-->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <corners android:radius="8dp" />
+    <solid android:color="@color/blue_500" />
+</shape>

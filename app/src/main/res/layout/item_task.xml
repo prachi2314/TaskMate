@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    item_task.xml
+    Location: res/layout/item_task.xml
+    Used in: DashboardFragment → rv_tasks RecyclerView
+    Shows: checkbox + task title + subject tag + due time
+-->
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="8dp"
+    android:paddingBottom="8dp"
+    android:paddingStart="0dp"
+    android:paddingEnd="0dp">
+
+    <!-- ── Checkbox ─────────────────────────────────────────────── -->
+    <com.google.android.material.checkbox.MaterialCheckBox
+        android:id="@+id/cb_task_done"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="0dp"
+        app:buttonTint="@color/purple_500"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <!-- ── Task title ───────────────────────────────────────────── -->
+    <TextView
+        android:id="@+id/tv_task_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:textSize="13sp"
+        android:textColor="@color/purple_900"
+        android:maxLines="2"
+        android:ellipsize="end"
+        app:layout_constraintTop_toTopOf="@id/cb_task_done"
+        app:layout_constraintStart_toEndOf="@id/cb_task_done"
+        app:layout_constraintEnd_toStartOf="@id/tv_task_subject_tag"
+        tools:text="Solve 20 integration problems" />
+
+    <!-- ── Due time ─────────────────────────────────────────────── -->
+    <TextView
+        android:id="@+id/tv_task_due"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="3dp"
+        android:textSize="11sp"
+        android:textColor="@color/purple_400"
+        app:layout_constraintTop_toBottomOf="@id/tv_task_title"
+        app:layout_constraintStart_toEndOf="@id/cb_task_done"
+        app:layout_constraintEnd_toStartOf="@id/tv_task_subject_tag"
+        tools:text="Due today · 5:00 PM" />
+
+    <!-- ── Subject tag pill ─────────────────────────────────────── -->
+    <TextView
+        android:id="@+id/tv_task_subject_tag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="6dp"
+        android:paddingHorizontal="8dp"
+        android:paddingVertical="3dp"
+        android:textSize="10sp"
+        android:textStyle="bold"
+        android:background="@drawable/bg_subject_tag"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:text="Math"
+        tools:textColor="@color/purple_700"
+        tools:backgroundTint="@color/purple_50" />
+
+    <!-- Divider line at the bottom of each row -->
+    <View
+        android:id="@+id/divider_task"
+        android:layout_width="0dp"
+        android:layout_height="0.5dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/purple_100"
+        app:layout_constraintTop_toBottomOf="@id/tv_task_due"
+        app:layout_constraintStart_toEndOf="@id/cb_task_done"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

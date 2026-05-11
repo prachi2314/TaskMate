@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    item_progress_subject.xml
+    Location: res/layout/item_progress_subject.xml
+    Used in: ProgressFragment → rv_mastery RecyclerView
+    Shows: subject name + progress bar + percentage
+-->
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingVertical="5dp">
+
+    <!-- ── Subject name ─────────────────────────────────────────── -->
+    <TextView
+        android:id="@+id/tv_progress_subject_name"
+        android:layout_width="64dp"
+        android:layout_height="wrap_content"
+        android:textSize="12sp"
+        android:textColor="@color/purple_900"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:text="Physics" />
+
+    <!-- ── Progress bar ─────────────────────────────────────────── -->
+    <com.google.android.material.progressindicator.LinearProgressIndicator
+        android:id="@+id/progress_mastery_bar"
+        android:layout_width="0dp"
+        android:layout_height="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        app:trackCornerRadius="20dp"
+        app:trackThickness="8dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/tv_progress_subject_name"
+        app:layout_constraintEnd_toStartOf="@id/tv_progress_percent"
+        tools:progress="70"
+        tools:indicatorColor="@color/blue_400"
+        tools:trackColor="@color/blue_50" />
+
+    <!-- ── Percentage ───────────────────────────────────────────── -->
+    <TextView
+        android:id="@+id/tv_progress_percent"
+        android:layout_width="36dp"
+        android:layout_height="wrap_content"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        android:gravity="end"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:text="70%"
+        tools:textColor="@color/blue_700" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

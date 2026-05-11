@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    bg_loading_dot_faded.xml
+    Location: res/drawable/bg_loading_dot_faded.xml
+
+    Purpose:
+      Semi-transparent white circle — the SECOND and THIRD
+      (inactive/dimmed) loading dots on the TaskMate splash screen.
+
+    Used in:
+      activity_main.xml → dot2 and dot3 (View)
+
+    Why semi-transparent?
+      The three dots create a "breathing" sequence animation.
+      dot1 starts bright (#FFFFFF) and dot2, dot3 start dimmed
+      so the animation contrast is clear — each dot pulses from
+      dimmed → bright → dimmed in sequence.
+
+    Color: #66FFFFFF
+      #66 = 102 in decimal = 40% opacity
+      #FFFFFF = white
+      So this is white at 40% opacity on the purple background.
+
+    The animation in MainActivity.kt changes the ALPHA of each
+    dot dynamically — this drawable sets only the starting state.
+-->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="oval">
+
+    <!--
+        White at 40% opacity.
+        Hex breakdown:
+          FF = fully opaque  (dot1 uses #FFFFFFFF via bg_loading_dot)
+          CC = 80% opaque
+          99 = 60% opaque
+          66 = 40% opaque  ← used here for inactive dots
+          33 = 20% opaque
+    -->
+    <solid android:color="#66FFFFFF" />
+
+</shape>

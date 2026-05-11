@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    bg_loading_dot.xml
+    Location: res/drawable/bg_loading_dot.xml
+
+    Purpose:
+      Solid white circle — the FIRST (active/bright) loading dot
+      on the TaskMate splash screen.
+
+    Used in:
+      activity_main.xml → dot1 (View)
+      The dot starts fully white and scales up in the animation.
+
+    Size is controlled by the View dimensions in the layout
+    (8dp × 8dp) — this drawable just sets the shape and color.
+
+    Color: #FFFFFF (pure white) — fully opaque, max brightness
+    so it stands out clearly on the purple gradient background.
+-->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="oval">
+
+    <!--
+        Solid white fill.
+        oval shape + equal width/height = perfect circle.
+        No stroke needed — clean minimal dot.
+    -->
+    <solid android:color="#FFFFFF" />
+
+</shape>

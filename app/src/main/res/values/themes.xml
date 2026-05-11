@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- ── Base app theme ───────────────────────────────────────── -->
+    <style name="Theme.TaskMate"
+        parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="colorPrimary">@color/purple_500</item>
+        <item name="colorPrimaryVariant">@color/purple_600</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorSecondary">@color/teal_400</item>
+        <item name="colorOnSecondary">@color/white</item>
+        <item name="colorError">@color/red_400</item>
+        <item name="android:windowTranslucentStatus">false</item>
+        <item name="android:fitsSystemWindows">true</item>
+        <item name="android:windowBackground">@color/background_page</item>
+        <item name="android:statusBarColor">@color/background_page</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:navigationBarColor">@color/white</item>
+    </style>
+
+    <!--
+        Splash screen theme.
+        Status bar matches the purple gradient background.
+        windowLightStatusBar false = white status bar icons
+        (so icons are visible on the dark purple background).
+    -->
+    <style name="Theme.TaskMate.Splash"
+        parent="Theme.TaskMate">
+        <item name="android:statusBarColor">@color/purple_800</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:navigationBarColor">@color/purple_800</item>
+        <item name="android:windowBackground">@drawable/bg_splash_gradient</item>
+    </style>
+
+    <!--
+        Dark theme for the Focus / Pomodoro screen.
+        Applied via Fragment's activity manually if needed.
+    -->
+    <style name="Theme.TaskMate.Dark"
+        parent="Theme.MaterialComponents.NoActionBar">
+        <item name="colorPrimary">@color/purple_400</item>
+        <item name="colorPrimaryVariant">@color/purple_600</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="android:windowBackground">@color/dark_bg_primary</item>
+        <item name="android:statusBarColor">@color/dark_bg_primary</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:navigationBarColor">@color/dark_bg_card</item>
+    </style>
+
+    <!-- Circle shape appearance for avatar ImageView -->
+    <style name="ShapeAppearance.Circle"
+        parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+
+</resources>

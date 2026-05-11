@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    item_subject.xml
+    Location: res/layout/item_subject.xml
+    Used in: SubjectAdapter → rv_subjects_list in SubjectFragment
+-->
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="10dp"
+    app:cardCornerRadius="14dp"
+    app:cardElevation="0dp"
+    app:strokeColor="@color/purple_100"
+    app:strokeWidth="1dp"
+    app:cardBackgroundColor="@color/white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="14dp">
+
+        <!-- Top row: icon + name + percentage -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="8dp">
+
+            <!-- Emoji icon -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_subject_icon"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginEnd="10dp"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="0dp"
+                app:cardBackgroundColor="@color/purple_50">
+                <TextView
+                    android:id="@+id/tv_subject_emoji"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:textSize="20sp"
+                    tools:text="📐" />
+            </androidx.cardview.widget.CardView>
+
+            <!-- Name + chapter count -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_subject_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/purple_900"
+                    tools:text="Mathematics" />
+
+                <TextView
+                    android:id="@+id/tv_subject_chapters"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:textSize="11sp"
+                    android:textColor="@color/purple_400"
+                    tools:text="9 / 18 chapters" />
+
+            </LinearLayout>
+
+            <!-- Percentage -->
+            <TextView
+                android:id="@+id/tv_subject_percent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:textColor="@color/purple_600"
+                tools:text="50%" />
+
+        </LinearLayout>
+
+        <!-- Progress bar -->
+        <com.google.android.material.progressindicator.LinearProgressIndicator
+            android:id="@+id/progress_subject"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:progress="50"
+            app:trackCornerRadius="4dp"
+            app:indicatorColor="@color/purple_500"
+            app:trackColor="@color/purple_50"
+            tools:ignore="HardcodedText" />
+
+        <!-- Chapter buttons row -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <!-- Minus button -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_chapter_minus"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:insetLeft="0dp"
+                android:insetTop="0dp"
+                android:insetRight="0dp"
+                android:insetBottom="0dp"
+                android:text="−"
+                android:textSize="18sp"
+                android:textColor="@color/purple_600"
+                app:strokeColor="@color/purple_200"
+                app:cornerRadius="8dp"
+                tools:ignore="HardcodedText" />
+
+            <!-- Add inside the LinearLayout in item_subject.xml after chapter buttons -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_mark_revised"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="match_parent"
+                android:layout_height="36dp"
+                android:layout_marginTop="8dp"
+                android:text="✓ Mark chapter as revised"
+                android:textSize="11sp"
+                android:textColor="@color/teal_600"
+                app:strokeColor="@color/teal_300"
+                app:cornerRadius="8dp"
+                tools:ignore="HardcodedText" />
+
+            <!-- Chapter counter display -->
+            <TextView
+                android:id="@+id/tv_chapter_counter"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textSize="13sp"
+                android:textColor="@color/purple_700"
+                android:textStyle="bold"
+                tools:text="9 / 18 done" />
+
+            <!-- Plus button -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_chapter_plus"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:insetLeft="0dp"
+                android:insetTop="0dp"
+                android:insetRight="0dp"
+                android:insetBottom="0dp"
+                android:text="+"
+                android:textSize="18sp"
+                app:backgroundTint="@color/purple_600"
+                app:cornerRadius="8dp"
+                tools:ignore="HardcodedText" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

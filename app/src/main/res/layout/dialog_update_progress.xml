@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    dialog_update_progress.xml
+    Location: res/layout/dialog_update_progress.xml
+    Used by: UpdateProgressDialog.kt
+-->
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="24dp">
+
+    <!-- Subject name -->
+    <TextView
+        android:id="@+id/tv_dialog_subject_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:textColor="@color/purple_900"
+        android:layout_marginBottom="6dp"
+        tools:text="Mathematics" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Update completed chapters"
+        android:textSize="13sp"
+        android:textColor="@color/purple_400"
+        android:layout_marginBottom="20dp"
+        tools:ignore="HardcodedText" />
+
+    <!-- Chapter count label -->
+    <TextView
+        android:id="@+id/tv_chapter_count"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        android:textColor="@color/purple_600"
+        android:layout_marginBottom="12dp"
+        tools:text="9 / 18" />
+
+    <!-- SeekBar for chapter selection -->
+    <SeekBar
+        android:id="@+id/seekbar_chapters"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:thumbTint="@color/purple_600"
+        android:progressTint="@color/purple_600"
+        android:progressBackgroundTint="@color/purple_100" />
+
+    <!-- Min / Max labels -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:textSize="11sp"
+            android:textColor="@color/purple_300"
+            tools:ignore="HardcodedText" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/tv_max_chapters"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="11sp"
+            android:textColor="@color/purple_300"
+            tools:text="18 chapters" />
+
+    </LinearLayout>
+
+</LinearLayout>

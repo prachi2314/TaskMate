@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    bg_date_active.xml
+    Filled blue circle — selected date number in timetable
+    Used in: fragment_timetable.xml (date_13 TextView)
+-->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="oval">
+    <solid android:color="@color/blue_500" />
+</shape>

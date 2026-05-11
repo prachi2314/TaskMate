@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    ic_taskmate_logo.xml
+    Location: res/drawable/ic_taskmate_logo.xml
+    TaskMate logo — checkmark inside a rounded square
+    with a small lightning bolt accent
+-->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="120dp"
+    android:height="120dp"
+    android:viewportWidth="120"
+    android:viewportHeight="120">
+
+    <!-- Outer rounded square background — deep purple -->
+    <path
+        android:fillColor="#5C48B8"
+        android:pathData="M20,0 L100,0 Q120,0 120,20 L120,100 Q120,120 100,120 L20,120 Q0,120 0,100 L0,20 Q0,0 20,0 Z" />
+
+    <!-- Inner glow circle — lighter purple -->
+    <path
+        android:fillColor="#7059D0"
+        android:pathData="M60,15 A45,45 0 1,1 60,105 A45,45 0 1,1 60,15 Z" />
+
+    <!-- Checkmark — white bold tick -->
+    <path
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="7"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:fillColor="@android:color/transparent"
+        android:pathData="M35,62 L50,77 L85,42" />
+
+    <!-- Small dot accent — top right -->
+    <path
+        android:fillColor="#C4B8E8"
+        android:pathData="M88,28 A5,5 0 1,1 88,38 A5,5 0 1,1 88,28 Z" />
+
+    <!-- Small dot accent — bottom left -->
+    <path
+        android:fillColor="#9083D8"
+        android:pathData="M28,84 A4,4 0 1,1 28,92 A4,4 0 1,1 28,84 Z" />
+
+</vector>

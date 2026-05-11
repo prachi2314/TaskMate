@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Error state — red border when til.error is set -->
+    <item
+        android:color="@color/input_stroke_error"
+        android:state_focused="true" />
+
+    <!-- Focused state — strong purple when field is active -->
+    <item
+        android:color="@color/input_stroke_focused"
+        android:state_focused="true" />
+
+    <!-- Disabled state — washed-out when field is not interactive -->
+    <item
+        android:color="@color/gray_200"
+        android:state_enabled="false" />
+
+    <!-- Default — light purple border when idle -->
+    <item android:color="@color/input_stroke_default" />
+
+</selector>

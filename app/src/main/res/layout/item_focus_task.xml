@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    item_focus_task.xml
+    Location: res/layout/item_focus_task.xml
+    Used in: FocusFragment → ll_focus_tasks LinearLayout
+    Shows: checkbox state + task title (dark themed)
+    Note: background is dark — all colors use dark theme values
+-->
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingVertical="5dp">
+
+    <!-- ── Checkbox (custom dark tint) ──────────────────────────── -->
+    <com.google.android.material.checkbox.MaterialCheckBox
+        android:id="@+id/cb_focus_task"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:buttonTint="@color/purple_400"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <!-- ── Task title ───────────────────────────────────────────── -->
+    <TextView
+        android:id="@+id/tv_focus_task_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:textSize="12sp"
+        android:textColor="@color/dark_text_primary"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/cb_focus_task"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:text="Solve 20 integration problems" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

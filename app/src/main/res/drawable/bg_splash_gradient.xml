@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    bg_splash_gradient.xml
+    Location: res/drawable/bg_splash_gradient.xml
+    Deep purple gradient for the TaskMate splash screen
+-->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <gradient
+        android:type="linear"
+        android:angle="135"
+        android:startColor="#3C3489"
+        android:centerColor="#5C48B8"
+        android:endColor="#7059D0" />
+</shape>

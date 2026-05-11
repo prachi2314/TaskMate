@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    bg_loading_dot_very_faded.xml
+    Location: res/drawable/bg_loading_dot_very_faded.xml
+
+    Purpose:
+      Very faint white circle — used as an optional fourth dot
+      or as the resting state for dots when the splash first loads
+      before the animation begins.
+
+    Can also be used for:
+      - Secondary pulsing indicators
+      - Placeholder dots on progress screens
+      - Any UI element needing a very subtle white circle
+
+    Color: #33FFFFFF = white at 20% opacity
+-->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="oval">
+
+    <solid android:color="#33FFFFFF" />
+
+</shape>
