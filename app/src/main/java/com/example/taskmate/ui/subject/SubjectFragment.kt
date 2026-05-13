@@ -10,6 +10,7 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.taskmate.R
 import com.example.taskmate.data.model.Subject
@@ -18,6 +19,15 @@ import com.example.taskmate.ui.adapters.SubjectAdapter
 import com.example.taskmate.utils.Resource
 import dagger.hilt.android.AndroidEntryPoint
 
+/**
+ * SubjectFragment.kt
+ * Location: ui/subject/SubjectFragment.kt
+ *
+ * Shows list of all subjects.
+ * Tapping a subject card navigates to SubjectDetailFragment.
+ * + and − buttons update chapter completion directly.
+ * Mark as Revised button logs a revision session.
+ */
 @AndroidEntryPoint
 class SubjectFragment : Fragment() {
 
@@ -54,24 +64,28 @@ class SubjectFragment : Fragment() {
 
     private fun setupRecyclerView() {
         subjectAdapter = SubjectAdapter(
+
+            // + button — increment chapter by 1
             onChapterIncrement = { subject ->
                 handleIncrement(subject)
             },
+
+            // − button — decrement chapter by 1
             onChapterDecrement = { subject ->
                 handleDecrement(subject)
             },
+
+            // Mark as revised button
             onMarkRevised = { subject ->
                 showRevisionDialog(subject)
             },
+
+            // Card tap — navigate to chapter detail screen
             onCardClick = { subject ->
-                parentFragmentManager.beginTransaction()
-                    .replace(
-                        R.id.nav_host_fragment,
-                        SubjectDetailFragment.newInstance(subject.id)
-                    )
-                    .addToBackStack(null)
-                    .commit()
+                navigateToDetail(subject)
             },
+
+            // Long press — delete with confirmation
             onDeleteClick = { subject ->
                 showDeleteConfirmation(subject)
             }
@@ -91,6 +105,44 @@ class SubjectFragment : Fragment() {
     }
 
     // ══════════════════════════════════════════════════════════════
+    //  NAVIGATION
+    // ══════════════════════════════════════════════════════════════
+
+    /**
+     * Navigates to SubjectDetailFragment passing the subject ID.
+     *
+     * findNavController() works correctly here because:
+     *  1. This Fragment is hosted inside NavHostFragment
+     *  2. onViewCreated has been called (view exists)
+     *  3. We call findNavController() which is imported from
+     *     androidx.navigation.fragment.findNavController
+     *
+     * The subject ID is passed as a Bundle argument.
+     * SubjectDetailFragment reads it via arguments?.getString("subjectId")
+     */
+    private fun navigateToDetail(subject: Subject) {
+        try {
+            val bundle = Bundle().apply {
+                putString("subjectId", subject.id)
+            }
+            findNavController().navigate(
+                R.id.action_subject_to_detail,
+                bundle
+            )
+        } catch (e: Exception) {
+            android.util.Log.e(
+                "SubjectFragment",
+                "Navigation failed: ${e.message}"
+            )
+            Toast.makeText(
+                requireContext(),
+                "Could not open subject details",
+                Toast.LENGTH_SHORT
+            ).show()
+        }
+    }
+
+    // ══════════════════════════════════════════════════════════════
     //  SUBJECT ACTIONS
     // ══════════════════════════════════════════════════════════════
 
@@ -104,7 +156,7 @@ class SubjectFragment : Fragment() {
         } else {
             Toast.makeText(
                 requireContext(),
-                "All chapters completed!",
+                "All chapters already completed!",
                 Toast.LENGTH_SHORT
             ).show()
         }
@@ -119,18 +171,12 @@ class SubjectFragment : Fragment() {
         }
     }
 
-    private fun openUpdateDialog(subject: Subject) {
-        UpdateProgressDialog
-            .newInstance(subject)
-            .show(childFragmentManager, UpdateProgressDialog.TAG)
-    }
-
     private fun showDeleteConfirmation(subject: Subject) {
         AlertDialog.Builder(requireContext())
             .setTitle("Delete Subject")
             .setMessage(
-                "Delete \"${subject.name}\"?\n" +
-                        "All progress data will be lost."
+                "Delete \"${subject.name}\"?\n\n" +
+                        "All chapter progress and revision data will be lost."
             )
             .setPositiveButton("Delete") { _, _ ->
                 viewModel.deleteSubject(subject.id)
@@ -152,8 +198,8 @@ class SubjectFragment : Fragment() {
         }
 
         AlertDialog.Builder(requireContext())
-            .setTitle("Log Revision — ${subject.name}")
-            .setMessage("This records that you revised ${subject.name} today.")
+            .setTitle("Log Revision")
+            .setMessage("Recording revision for: ${subject.name}")
             .setView(input)
             .setPositiveButton("Log Revision") { _, _ ->
                 val note = input.text.toString().trim()
